@@ -1,8 +1,17 @@
 <script>
 import axios from "axios";
+import botonE from '../components/boton.vue';
+import inpuS from '../components/slider.vue';
+import Normal from '../components/inputN.vue';
+import Texta from '../components/Textarea.vue';
+import Selec from '../components/Select.vue';
 let API_URL = "/api/guardarPersonasUxd.php";
 
 export default {
+  components: {botonE, inpuS, Normal, Texta, Selec
+
+},
+  emits: ['person'], emits: ['normal'], emits: ['tare'], emits: ['Civ'],
   data() {
     return {
       nombre: "",
@@ -22,6 +31,7 @@ export default {
       motivaciones: [],
       porcentaje: "",
       marcas: "",
+      habilitar: false,
     };
   },
   methods: {
@@ -50,6 +60,62 @@ export default {
           console.log(response.status);
         });
     },
+    pers1(s){
+                this.personalidad01=s;
+                console.log(s);
+            },
+    pers2(s){
+                this.personalidad02=s;
+                console.log(s);
+            },
+
+    pers3(s){
+                this.personalidad03=s;
+                console.log(s);
+            },
+    pers4(s){
+                this.personalidad04=s;
+                console.log(s);
+            },
+
+    nombres(s){
+                this.nombre=s;
+                console.log(s);
+            },
+
+    residen(s){
+                this.residencia=s;
+                console.log(s);
+            },
+
+    traba(s){
+                this.trabajo=s;
+                console.log(s);
+            },
+
+    tareas(s){
+                this.cita=s;
+                console.log(s);
+            },
+    Autor(s){
+                this.citaAutor=s;
+                console.log(s);
+            },
+
+    Biogra(s){
+                this.bio=s;
+                console.log(s);
+            },
+
+    EstadoC(s){
+                this.estadoCivil=s;
+                console.log(s);
+            }
+    
+    
+
+
+
   },
 };
 </script>
@@ -68,18 +134,11 @@ export default {
           Registrato de ISCLAB
         </label>
         <form class="mt-20 w-96">
-          <div>
-            <label
-              for="nombre"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Nombres</label
-            >
-            <input
-              v-model="nombre"
-              type="text"
-              placeholder="Nombres"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+          
+          <div class="mt-7">
+            <Normal @normal="nombres">Escribe nombre completo</Normal>
+
+
           </div>
 
           <div class="mt-7">
@@ -96,88 +155,52 @@ export default {
             />
           </div>
 
-          <label
-            for="estadoCivil"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-            >Estado civil</label
-          >
-          <select
-            v-model="estadoCivil"
-            class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-          >
-            <option selected>Estado civil</option>
-            <option value="1">Soltero</option>
-            <option value="2">Casado</option>
-            <option value="3">Divorciado</option>
-            <option value="4">Separado</option>
-            <option value="5">Union libre</option>
-            <option value="6">Viudo</option>
-          </select>
-
           <div class="mt-7">
-            <label
-              for="residencia"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Residencia</label
-            >
-            <input
-              v-model="residencia"
-              type="text"
-              placeholder="Residencia"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Selec @Civ="EstadoC">Estado Civil</Selec>
+        
+
           </div>
 
           <div class="mt-7">
-            <label
-              for="trabajo"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Trabajo</label
-            >
-            <input
-              v-model="trabajo"
-              type="text"
-              placeholder="Trabajo"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Normal @normal="residen">Escribe tu residencia</Normal>
           </div>
 
           <div class="mt-7">
-            <label
-              for="cita"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Cita</label
-            >
-            <textarea
-              v-model="cita"
-              type="text"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            ></textarea>
+            <Normal @normal="traba">Escribe donde trabajas</Normal>
+           
           </div>
 
           <div class="mt-7">
-            <label
-              for="citaAutor"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Cita Autor</label
-            >
-            <textarea
-              v-model="citaAutor"
-              type="text"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            ></textarea>
+            <Texta @tare="tareas">Escribe tu cita</Texta>
+          </div>
+
+          <div class="mt-7">
+            <Texta @tare="Autor">Escribe tu cita Autor</Texta>
+            
           </div>
           <div class="mt-7">
-            <label
-              for="bio"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Biografia</label
-            >
-            <textarea
-              v-model="bio"
-              type="text"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            ></textarea>
+            <Texta @tare="Biogra">Escribe tu biografia</Texta>
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="pers1">Personalidad 01</inpuS>
+
+         
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="pers2">Personalidad 02</inpuS>
+            
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="pers3">Personalidad 03</inpuS>
+            
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="pers4">Personalidad 04</inpuS>
+            
           </div>
 
           <div class="mt-7">
@@ -208,71 +231,6 @@ export default {
             />
           </div>
 
-          <div class="mt-7">
-            <label
-              for="personalidad01"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >personalidad 1</label
-            >
-            <input
-              v-model="personalidad01"
-              type="range"
-              min="0"
-              max="100"
-              class="mt-1 block w-full border-none  bg-blue-600 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
-            <span>{{ this.personalidad01 }}%</span>
-          </div>
-
-          <div class="mt-7">
-            <label
-              for="personalidad02"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >personalidad 2</label
-            >
-            <input
-              v-model="personalidad02"
-              type="range"
-              min="0"
-              max="100"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-              
-              />
-              <span>{{ this.personalidad02 }}%</span>
-          </div>
-
-          <div class="mt-7">
-            <label
-              for="personalidad03"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >personalidad 3</label
-            >
-            <input
-              v-model="personalidad03"
-              type="range"
-              min="0"
-              max="100"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
-            <span>{{ this.personalidad03 }}%</span>
-          </div>
-
-          <div class="mt-7">
-            <label
-              for="personalidad04"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >personalidad 4</label
-            >
-            <input
-              v-model="personalidad04"
-              type="range"
-              min="0"
-              max="100"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
-            <span>{{ this.personalidad04 }}%</span>
-          </div>
-          <div></div>
 
           <div class="mt-7">
             <label
@@ -314,13 +272,9 @@ export default {
             />
           </div>
           <div>
-            <button
-              class="mt-7 bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"
-              @click="submit()"
-            >
-              Registrar
-            </button>
+            
           </div>
+          <botonE :desactivar="habilitar"  @click="submit"> Enviar</botonE>
         </form>
       </div>
     </div>
