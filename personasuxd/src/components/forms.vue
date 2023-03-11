@@ -5,13 +5,14 @@ import inpuS from '../components/slider.vue';
 import Normal from '../components/inputN.vue';
 import Texta from '../components/Textarea.vue';
 import Selec from '../components/Select.vue';
+import Nume from '../components/Edad.vue';
 let API_URL = "/api/guardarPersonasUxd.php";
 
 export default {
-  components: {botonE, inpuS, Normal, Texta, Selec
+  components: {botonE, inpuS, Normal, Texta, Selec, Nume
 
 },
-  emits: ['person'], emits: ['normal'], emits: ['tare'], emits: ['Civ'],
+  emits: ['person'], emits: ['normal'], emits: ['tare'], emits: ['Civ'], emits: ['num'],
   data() {
     return {
       nombre: "",
@@ -110,6 +111,10 @@ export default {
     EstadoC(s){
                 this.estadoCivil=s;
                 console.log(s);
+            },
+    Nu(s){
+                this.edad=s;
+                console.log(s);
             }
     
     
@@ -142,21 +147,12 @@ export default {
           </div>
 
           <div class="mt-7">
-            <label
-              for="edad"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Edad</label
-            >
-            <input
-              v-model="edad"
-              type="number"
-              placeholder="Edad"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Selec @Civ="EstadoC">Estado Civil</Selec>
+           
           </div>
 
           <div class="mt-7">
-            <Selec @Civ="EstadoC">Estado Civil</Selec>
+            <Nume @num="Nu">Edad</Nume>
         
 
           </div>

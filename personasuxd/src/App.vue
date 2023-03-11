@@ -51,7 +51,7 @@ import HelloWorld from './components/HelloWorld.vue'
                     
                 </li>
                 <li class="hover:-translate-y-1 hover:scale-110 duration-300 hover:text-cyan-900">
-                  <RouterLink to="/personajes">Informacion</RouterLink>
+                  <RouterLink to="/personas">Registrados</RouterLink>
                 </li>
             </ul>
         </div>
