@@ -27,11 +27,27 @@ export default {
       personalidad02: "0",
       personalidad03: "0",
       personalidad04: "0",
-      objetivos: [],
-      frustraciones: [],
+      objetivos:[],
+      objetivos2:[],
+      objetivos3:[],
+      objetivos4:[],
+      frustraciones:[],
+      frustraciones2:[],
+      frustraciones3:[],
+      frustraciones4:[],
       motivaciones: [],
-      porcentaje: "",
-      marcas: "",
+      motivaciones2: [],
+      motivaciones3: [],
+      motivaciones4: [],
+      porcentaje: "0",
+      porcentaje2: "0",
+      porcentaje3: "0",
+      porcentaje4: "0",
+      marcas: [],
+      marcas2: [],
+      marcas3: [],
+      marcas4: [],
+      
       habilitar: false,
     };
   },
@@ -115,6 +131,65 @@ export default {
     Nu(s){
                 this.edad=s;
                 console.log(s);
+            },
+    objetivo1(s){
+                this.objetivos2=s;
+                this.objetivos=[{value:s}];
+                console.log(this.objetivos)
+            },
+    objetivo2(s){
+                this.objetivos3=s;
+                this.objetivos=[{value: this.objetivos2},{value: this.objetivos3}];
+                console.log(this.objetivos3)
+            },
+    objetivo3(s){
+                this.objetivos4=s;
+                this.objetivos=[{value: this.objetivos2},{value: this.objetivos3},{value: this.objetivos4}];
+                console.log(this.objetivos4)
+                console.log(this.objetivos)
+            },
+    frustracion1(s){
+                this.frustraciones2=s;
+                this.frustraciones=[{value:s}];
+                console.log(this.frustraciones)
+            },
+    frustracion2(s){
+                this.frustraciones3=s;
+                this.frustraciones=[{value: this.frustraciones2},{value: this.frustraciones3}];
+                console.log(this.frustraciones3)
+            },
+    frustracion3(s){
+                this.frustraciones4=s;
+                this.frustraciones=[{value: this.frustraciones2},{value: this.frustraciones3},{value: this.frustraciones4}];
+                console.log(this.frustraciones4)
+                console.log(this.frustraciones)
+            },
+    motivacion1(s){
+                this.motivaciones2=s;
+                
+            },
+    motivacion2(s){
+                this.motivaciones3=s;
+            
+            },
+    motivacion3(s){
+                this.motivaciones4=s;
+            },
+    por1(s){
+                this.porcentaje2=s;
+                this.motivaciones={value: this.motivaciones2,'porcentaje':s};
+                console.log(this.motivaciones)
+            },
+    por2(s){
+                this.porcentaje3=s;
+                this.motivaciones=[{value: this.motivaciones2,'porcentaje':this.porcentaje2},{value: this.motivaciones3, 'porcentaje':s}];
+                console.log(this.motivaciones);
+             
+            },
+    por3(s){
+                this.porcentaje4=s;
+                this.motivaciones=[{value: this.motivaciones2,'porcentaje':this.porcentaje2},{value: this.motivaciones3, 'porcentaje':this.porcentaje3},{value: this.motivaciones4, 'porcentaje':s}]
+                console.log(this.motivaciones)
             }
     
     
@@ -200,60 +275,52 @@ export default {
           </div>
 
           <div class="mt-7">
-            <label
-              for="objetivos"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Objetivos</label
-            >
-            <input
-              v-model="objetivos"
-              type="text"
-              placeholder="Escribe objetivos"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Normal @normal="objetivo1">Escribe 3 Objetivos:</Normal>
+          </div>
+          <div class="mt-1">
+            <Normal @normal="objetivo2"></Normal>
+          </div>
+
+          <div class="mt-1">
+            <Normal @normal="objetivo3"></Normal>
           </div>
 
           <div class="mt-7">
-            <label
-              for="frustraciones"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Frustraciones</label
-            >
-            <input
-              v-model="frustraciones"
-              type="text"
-              placeholder="Escribe frustraciones"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Normal @normal="frustracion1">Escribe 3 Frustraciones:</Normal>
+          </div>
+          <div class="mt-1">
+            <Normal @normal="frustracion2"></Normal>
           </div>
 
-
-          <div class="mt-7">
-            <label
-              for="motivaciones"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Motivaciones</label
-            >
-            <input
-              v-model="motivaciones"
-              type="text"
-              placeholder="Escribe motivaciones"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+          <div class="mt-1">
+            <Normal @normal="frustracion3"></Normal>
           </div>
 
           <div class="mt-7">
-            <label
-              for="porcentaje"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-7"
-              >Porcentaje</label
-            >
-            <input
-              v-model="porcentaje"
-              type="text"
-              class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-            />
+            <Normal @normal="motivacion1">Escribe 3 Motivaciones:</Normal>
           </div>
+
+          <div class="mt-1">
+            <inpuS @person="por1"></inpuS>
+          </div>
+
+          <div class="mt-1">
+            <Normal @normal="motivacion2"></Normal>
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="por2"></inpuS>
+          </div>
+
+          <div class="mt-1">
+            <Normal @normal="motivacion3"></Normal>
+          </div>
+
+          <div class="mt-7">
+            <inpuS @person="por3"></inpuS>
+          </div>
+
+         
 
           <div class="mt-7">
             <label
