@@ -3,7 +3,7 @@ export default {
     
     data() {
         return {
-            slider: 50
+            slider: 0
         }
     },
     methods: {
@@ -18,7 +18,7 @@ export default {
     <div>
         <slot></slot> ({{ slider }}%)
         <br>
-        <input class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" type="range" min="0" max="100" v-model="slider" @change="enviar">
+        <input class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0" type="range" min="0" max="100" v-model="slider" required @change="enviar">
 
     </div>
 </template>

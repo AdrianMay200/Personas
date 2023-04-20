@@ -5,12 +5,10 @@ import inpuS from '../components/slider.vue';
 import Normal from '../components/inputN.vue';
 import Texta from '../components/Textarea.vue';
 import Selec from '../components/Select.vue';
-import Nume from '../components/Edad.vue';
+import Nume from '../components/Ed.vue';
 let API_URL = "/api/guardarPersonasUxd.php";
-
 export default {
   components: {botonE, inpuS, Normal, Texta, Selec, Nume
-
 },
   emits: ['person'], emits: ['normal'], emits: ['tare'], emits: ['Civ'], emits: ['num'],
   data() {
@@ -85,7 +83,6 @@ export default {
                 this.personalidad02=s;
                 console.log(s);
             },
-
     pers3(s){
                 this.personalidad03=s;
                 console.log(s);
@@ -94,22 +91,18 @@ export default {
                 this.personalidad04=s;
                 console.log(s);
             },
-
     nombres(s){
                 this.nombre=s;
                 console.log(s);
             },
-
     residen(s){
                 this.residencia=s;
                 console.log(s);
             },
-
     traba(s){
                 this.trabajo=s;
                 console.log(s);
             },
-
     tareas(s){
                 this.cita=s;
                 console.log(s);
@@ -118,12 +111,10 @@ export default {
                 this.citaAutor=s;
                 console.log(s);
             },
-
     Biogra(s){
                 this.bio=s;
                 console.log(s);
             },
-
     EstadoC(s){
                 this.estadoCivil=s;
                 console.log(s);
@@ -193,9 +184,6 @@ export default {
             }
     
     
-
-
-
   },
 };
 </script>
